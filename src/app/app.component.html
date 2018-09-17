@@ -1,0 +1,88 @@
+
+<ng-template #gameRule let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><strong>GAME PLAY</strong></h4>
+   <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>-->
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+          <h6 class="modal-title" id="modal-basic-title"><strong>BASIC PLAY.</strong></h6>
+      </div>
+      <div class="form-group">
+        <div>
+            <p>
+                The game is just like driving a vehicle using clutch and gear. 
+                There are two buttons available for the player, one is clutch(left side on the screen) and the other is gear (right side on the screen). 
+                The player can change the gear up to five times. As the game begins it's already in first gear and you need to change the gear for increasing the speed, 
+                but before changing the gear each time you need to press the clutch button for enabling the gear button.           
+            </p>
+            <p>
+              <span><strong>Note:</strong></span> For changing gear the player first need to press the clutch button and after immediately he needs to press the gear button, 
+              if the player having any delay in pressing the gear button he needs to again press the clutch button in order to change the gear. 
+            </p>
+        </div>
+      </div>
+      <div class="form-group">
+          <h6 class="modal-title" id="modal-basic-title"><strong>WINNING</strong></h6>
+      </div>
+      <div class="form-group">
+        <div>
+            <p>
+               The game ends within three minutes, so the player who shifted the highest gear will be the winner.           
+            </p>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" (click)="closeModal();gameStartFlag = !gameStartFlag">Start the Game</button>
+  </div>
+</ng-template>
+
+<div class="main-container-out">
+  <div class="wrapper">						
+    <section class="spd-main-content">
+      <div class="svgChartContainer">
+        <div class="gameIntroTooltip" *ngIf="gameStartFlag">Keep calm and strap in,it's race time!!! </div>  
+        <div class="chartContainer">
+          <div class="bgImage">
+            <!--<img src="/assets/testImage.png" >-->
+            <img src="/assets/animation.gif" >
+          </div>
+          <!--<div class="bgGradient">
+              <img src="/assets/test2.png" >
+            </div>-->
+          <div id="chartdiv" [style.width.%]="100" [style.height.px]="400">
+          </div>
+          <div class="digitalTimer">
+            <div class="timer1"><span class="timer1Content">0</span></div>
+            <div class="timer2"><span class="timer2Content">0</span></div>
+            <div class="timer3"><span class="timer3Content">0</span></div>
+            <div class="timer4"><span class="timer4Content">{{digitalKm2}}</span></div>
+            <div class="timer5"><span class="timer5Content">{{digitalKm1}}</span></div>                                                
+          </div>
+        </div>  
+      </div> 
+    </section>
+  </div>
+  <div class="imageContainer">
+    <div class="clutchContainer">
+        <div class="toolTipInfoClutch" *ngIf="gameStartFlag">
+            press the clutch button before changing the gear
+        </div>
+      <div class="clutchBtn" #clBtn></div>
+      <img src="/assets/left.svg" class="clutchImage2" >
+    </div>
+    <div class="gearContainer">
+        <div class="toolTipInfoGear" *ngIf="gameStartFlag">
+            press the gear button for changing the gear
+        </div>
+      <div class="gearBtn" #gearBtn></div>
+      <img src="/assets/gear.svg" class="gearImage2" >
+    </div>
+  </div>
+</div>     
+<router-outlet></router-outlet>

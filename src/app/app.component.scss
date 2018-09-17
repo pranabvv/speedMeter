@@ -1,0 +1,379 @@
+
+.holder{
+	width:100%;
+	float:left;
+	height:50px;
+	background:#ccc;
+	margin-bottom:20px;
+}
+p {
+  text-align: justify;
+}
+.main-container-out{
+	float:left;
+	width:100%;
+  height:100%;
+  background: #000205;
+  overflow:hidden;
+}
+
+.wrapper{
+	width:100%;
+	max-width:320px;
+	margin:0 auto;
+}
+.spd-main-content{
+  position:relative;
+	float:left;
+	/*height:730px;*/
+  /*height:420px;*/
+	/* background:#000205;*/
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px;
+	width:100%;
+}
+.spd-top{
+	float:left;
+	width:100%;
+	height:auto;
+	padding:0 20px;
+}
+.spd-top a{
+	text-decoration:none;
+}
+.close_ico{
+	float:left;
+	width:27px;
+	height:27px;
+	background:url("/assets/close_ico.png") no-repeat;
+	margin-top:10px;
+}
+.top-bar{
+	width:177px;
+	height:16px;
+	background:#fff;
+	-webkit-border-radius: 0px 0px 25px 25px;
+	-moz-border-radius: 0px 0px 25px 25px;
+	border-radius: 0px 0px 25px 25px;
+	float:left;
+	margin-left:16px;
+}
+.money_ico{
+	float:right;
+	width:44px;
+	height:48px;
+	background:url("/assets/ico_2.png") no-repeat;
+	margin-top:10px;
+}
+.spd-logo{
+	float:left;
+	width:100%;
+	text-align:center;
+	margin-top:10px;
+}
+.spd-logo a{
+	text-decoration:none;
+	width:auto;
+	display:inline-block;
+}
+.spd-btn-out{
+	float:left;
+	width:100%;
+	text-align:center;
+	padding-top:16px;
+  padding-bottom:35px;
+  font-family:"Lucida Console", Monaco, monospace;
+}
+.spd-btn{
+	background:#e24441;
+	color:#fff;
+	-webkit-border-radius: 40px;
+	-moz-border-radius: 40px;
+	border-radius: 40px;
+	font-size:20px;
+	width:78%;
+	float:none;
+	margin:0 auto;
+	display:inline-block;
+	height:28px;
+	padding-top:4px;
+	text-decoration:none;
+}
+
+.imageContainer {
+  width:100%;
+  float:left;
+  position:relative;
+  top:-46px;
+  z-index:100;
+}
+
+
+.gearImageDiv,.clutchImageDiv {
+  display: inline-block;
+}
+
+.gearImageDiv {
+  float:right;
+}
+.clutchClick {
+  position: absolute;
+  width: 137px;
+  height: 114px;
+  background: transparent;
+} 
+.gearClick {
+  position: absolute;
+  width: 133px;
+  height: 111px;
+  background: transparent;
+}
+.chartContainer {
+  float: left;
+  width: 100%;
+  position: relative;
+  z-index: 100;
+  /*padding-top: 120px;*/
+}
+.gearImage {
+    float:right;
+    width:100px;
+    height:100px;
+    background: url('/assets/gear.svg') no-repeat;
+    background-size:100%;
+    border:0;
+    outline:none;
+}
+.clutchImage {
+    float:left;
+    width:100px;
+    height:100px;
+    background: url('/assets/left.svg') no-repeat;
+    background-size:100%;
+    border:0;   
+    outline:none; 
+}
+button::-moz-focus-inner {
+   border: 0;
+}
+#chartdiv {
+  position:relative;
+  padding-top:60px;
+  /* background-image: linear-gradient(to right, white, red);*/
+  
+}
+
+.svgChartContainer {
+  position:relative;
+  float:left;
+  width:100%;
+}
+.svgBorder {
+    position: absolute;
+    width:100%!important;
+    overflow:hidden;
+    border-radius: 100%;
+    bottom:118px;
+}
+.bgImage {
+  position: absolute;
+  /*bottom: 130px;
+  left: -77px;*/
+  bottom: -84px;
+  left: -27px;
+}
+.svgBg {
+  position: absolute;
+  top: 64px;
+  left: -67px;
+  width: 100%;
+}
+.bgImage img {
+  width: 373px;
+  height: 506px;
+}
+.digitalTimer {
+  position:absolute;
+  /*top:307px;*/
+  bottom:34px;
+  left:125px;
+}
+.timer1,.timer2,.timer3,.timer4,.timer5 {
+  width:10px;
+  height:18px;
+  background:#fff;
+  display:inline-block;
+  margin:2px
+}
+.timer5 {
+  background:rgb(197, 49, 49);
+  color: #fff;
+}
+.timer1 .timer1Content,.timer2 .timer2Content,.timer3 .timer3Content,.timer4 .timer4Content,.timer5 .timer5Content {
+  float: left;
+  height: 18px;
+  line-height: 20px;
+}
+.svgBgImg {
+  position: absolute;
+  top: 92px;
+  left: -63px;
+}
+.svgBgImg img {
+  width: 442px;
+  height: 350px;
+}
+.gameIntroTooltip {
+    width: 285px;
+    background-color: #3b75de;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top:74px;
+    left: 20px;
+    font-size:14px;
+    z-index:200;
+   -webkit-animation: fadeinout 4s linear forwards;
+    animation: fadeinout 4s linear forwards;
+}
+
+.gameIntroTooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #3b75de transparent;
+}
+.toolTipInfoClutch {
+    left: 0px;
+    top: 89px;
+    width: 167px;
+    background-color: #3b75de;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 100;
+    font-size:14px;
+    opacity:0;
+   -webkit-animation: fadeinout 6s linear 5s forwards;
+    animation: fadeinout 6s linear 5s forwards;
+}
+.toolTipInfoClutch::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 30%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #3b75de transparent;
+}
+.clutchContainer {
+  float: left;
+  position: relative;
+}
+.gearContainer {
+  float: right;
+  position: relative;
+}
+.clutchBtn{
+  position: absolute;
+  left: 0px;
+  top:0px;
+  width:100%;
+  height: 100%;
+  z-index: 100;
+}
+.gearBtn{
+  position: absolute;
+  right: 0px;
+  top:0px;
+  width:100%;
+  height: 100%;
+  z-index: 100;
+
+}
+
+.toolTipInfoGear {
+  color: #fff;
+  width: 150px;
+  border-radius: 6px;
+  padding: 4px 4px;
+  text-align: center;
+  position: absolute;
+  background: #3b75de;
+  font-size: 14px;
+  /* border: 4px solid #c2e1f5; */
+  left: -32px;
+  opacity:0;
+  bottom:110px;
+  z-index:100;
+  -webkit-animation: fadeinout 6s linear 6s forwards;
+  animation: fadeinout 6s linear 6s forwards;
+
+}
+.toolTipInfoGear:after, .toolTipInfoGear:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.toolTipInfoGear:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-top-color: #88b7d5;
+	border-width: 6px;
+  border-top-color: #3b75de;
+}
+.clutchImage2 {
+  width: 125px;
+  float:left;
+}
+.gearImage2 {
+  width: 125px;
+  float:right;
+}
+.bgGradient {
+  position: absolute;
+  left: 222px;
+  top: 59px;
+}
+.bgGradient img {
+  width: 388px;
+  height: 356px;
+  z-index:-1;
+}
+@-webkit-keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+  70% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+  70% { opacity: 1; }
+}
+/*
+@media only screen and (max-width: 430px) {
+	
+	.top-bar { width: 150px; height: 25px; margin-left: 38px;} 
+	.spd-btn-out{ padding-top:16px; }
+  
+  .wrapper{ max-width:320px; }
+	
+}
+* */
