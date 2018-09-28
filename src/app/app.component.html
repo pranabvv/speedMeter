@@ -74,14 +74,14 @@
             press the clutch button before changing the gear
         </div>
       <div class="clutchBtn" #clBtn></div>
-      <img src="/assets/left.svg" class="clutchImage2" >
+      <img [src]="clutchBtnShakeEffect ? '/assets/vectortest.svg' : '/assets/left.svg'" class="clutchImage2" [ngClass]="clutchBtnShakeEffect ? 'shake' : ''">
     </div>
     <div class="gearContainer">
         <div class="toolTipInfoGear" *ngIf="gameStartFlag">
             press the gear button for changing the gear
         </div>
       <div class="gearBtn" #gearBtn></div>
-      <img src="/assets/gear.svg" class="gearImage2" >
+      <img  [src]="gearBtnShakeEffect ? '/assets/gearpressed2.svg' : '/assets/gear.svg'"class="gearImage2" [ngClass]="gearBtnShakeEffect ? 'shake' : ''">
     </div>
   </div>
 </div>     

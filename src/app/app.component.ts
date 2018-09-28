@@ -44,6 +44,8 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
   @ViewChild('gameRule') private modal;
   @ViewChild('clBtn') private clBtnElement;
   @ViewChild('gearBtn') private gearBtnElement;
+  clutchBtnShakeEffect = false;
+  gearBtnShakeEffect = false;
   constructor(private AmCharts: AmChartsService, private router: Router,
     private activatedRoute: ActivatedRoute, private modalService: NgbModal) {
     this.dataSource = {
@@ -83,8 +85,8 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.clutchFun = this.clutch.bind(this);
-    this.gearFun = this.gear.bind(this);
+    this.clutchFun = this.clutch.bind(this, 'btnPressed');
+    this.gearFun = this.gear.bind(this, 'btnPressed');
     this.clBtnElement.nativeElement.addEventListener('click', this.clutchFun, true);
     this.gearBtnElement.nativeElement.addEventListener('click', this.gearFun, true);
     const ngbModalOptions: NgbModalOptions = {
@@ -196,10 +198,17 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
   }
 
  // clutch button method
-  clutch() {
-    console.log('clutch');
+  clutch(val) {
+    if (val === 'btnPressed') {
+      this.clutchBtnShakeEffect = true;
+    } else {
+      this.clutchBtnShakeEffect = false;
+    }
+    /* console.log('clutch');*/
     setTimeout(() => {
       this.clutchBtnStatus = false;
+      this.clutchBtnShakeEffect = false;
+      this.gearBtnShakeEffect = false;
     }, 500);
     if (this.rpmNeedleStartShake) {
       clearInterval(this.rpmNeedleStartShake);
@@ -224,7 +233,7 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
           this.rpmNeedle += 1 / this.needleSmooth;
           this.chart.arrows[1].setValue(this.rpmNeedle);
           if (this.gearBtnStatus) {
-            console.log('gear count', this.gearCount);
+            /* console.log('gear count', this.gearCount);*/
             if (this.rpmNeedleStartPoint) {
               this.rpmNeedleStartPoint = false;
               this.speedNeedleMoveFunc();
@@ -275,7 +284,7 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
             clearInterval(this.rpmNeedleMoveBackwardInterval);
             this.gearLimitFlag = false;
             this.rpmNeedleStartPoint = true;
-            this.clutch();
+            this.clutch('btnFuncall');
           }
         } else {
           if (this.rpmNeedle <= this.rpmMin) {
@@ -294,8 +303,14 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
   }
 
   // gear button method
-  gear() {
+  gear(val) {
+    /* console.log('gear');*/
     if (this.clutchBtnStatus) {
+      if (val === 'btnPressed') {
+        this.gearBtnShakeEffect = true;
+      } else {
+        this.gearBtnShakeEffect = false;
+      }
       this.clutchBtnStatus = false;
       this.gearCount++;
       switch (this.gearCount) {
@@ -323,7 +338,6 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
       // console.log('gear count in gear', this.gearCount);
       this.gearBtnElement.nativeElement.removeEventListener('click', this.gearFun, true);
       this.gearBtnStatus = true;
-      console.log('gear');
     }
   }
   ngOnDestroy() {
@@ -353,8 +367,8 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
             }
           }
         });
-        this.clutch();
-        this.gear();
+        this.clutch('btnFuncall');
+        this.gear('btnFuncall');
         setTimeout(() => {
           this.gameStopFunc();
           this.paramAppend('timeout');
