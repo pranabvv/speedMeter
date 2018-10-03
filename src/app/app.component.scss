@@ -105,7 +105,7 @@ p {
   width:100%;
   float:left;
   position:relative;
-  top:70px;
+  top:90px;
   z-index:100;
 }
 
@@ -168,7 +168,7 @@ button::-moz-focus-inner {
   position:relative;
   float:left;
   width:100%;
-  top:105px;
+  top:124px;
 }
 .svgBorder {
     position: absolute;
@@ -252,7 +252,7 @@ button::-moz-focus-inner {
     border-style: solid;
     border-color: transparent transparent #3b75de transparent;
 }
-.toolTipInfoClutch {
+/*.toolTipInfoClutch {
     left: 0px;
     top: 89px;
     width: 167px;
@@ -277,6 +277,40 @@ button::-moz-focus-inner {
     border-width: 5px;
     border-style: solid;
     border-color: transparent transparent #3b75de transparent;
+}*/
+.toolTipInfoClutch {
+  left: 3px;
+  bottom: 110px;
+  width: 160px;
+  background-color: #3b75de;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 100;
+  font-size:14px;
+  opacity:0;
+  -webkit-animation: fadeinout 6s linear 5s forwards;
+  animation: fadeinout 6s linear 5s forwards;
+
+}
+.toolTipInfoClutch:after, .toolTipInfoClutch:before {
+	top: 100%;
+	left: 40%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.toolTipInfoClutch:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-top-color: #88b7d5;
+	border-width: 6px;
+  border-top-color: #3b75de;
 }
 .clutchContainer {
   float: left;
@@ -314,7 +348,7 @@ button::-moz-focus-inner {
   background: #3b75de;
   font-size: 14px;
   /* border: 4px solid #c2e1f5; */
-  left: -32px;
+  left: -28px;
   opacity:0;
   bottom:110px;
   z-index:100;
