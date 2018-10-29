@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { interval } from 'rxjs';
@@ -15,7 +15,7 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
   rpmNeedle = 0.0;
   gearCount = 0;
   needleSmooth = 35;
-  private chart: AmChart;
+  chart: AmChart;
   rpmMin = 2.2;
   rpmMax = 5.2;
   clutchBtnStatus = false;
@@ -47,7 +47,7 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
   clutchBtnShakeEffect = false;
   gearBtnShakeEffect = false;
   constructor(private AmCharts: AmChartsService, private router: Router,
-    private activatedRoute: ActivatedRoute, private modalService: NgbModal) {
+    private activatedRoute: ActivatedRoute, private modalService: NgbModal, private cdref: ChangeDetectorRef) {
     this.dataSource = {
       'chart': {
         'caption': 'Customer Satisfaction Score',
@@ -85,17 +85,7 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.clutchFun = this.clutch.bind(this, 'btnPressed');
-    this.gearFun = this.gear.bind(this, 'btnPressed');
-    this.clBtnElement.nativeElement.addEventListener('click', this.clutchFun, true);
-    this.gearBtnElement.nativeElement.addEventListener('click', this.gearFun, true);
-    const ngbModalOptions: NgbModalOptions = {
-      backdrop: 'static',
-      keyboard: false
-    };
-    setTimeout(() => {
-      this.modalReference = this.modalService.open(this.modal, ngbModalOptions);
-    }, 0);
+    // console.log(this.chart.isReady);
     this.chart = this.AmCharts.makeChart('chartdiv', {
       'type': 'gauge',
       'theme': 'light',
@@ -195,6 +185,21 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
         'enabled': true
       }
     });
+    this.cdref.detectChanges();
+    this.clutchFun = this.clutch.bind(this, 'btnPressed');
+    this.gearFun = this.gear.bind(this, 'btnPressed');
+    if (this.clBtnElement) {
+      this.clBtnElement.nativeElement.addEventListener('click', this.clutchFun, true);
+    }
+    if (this.gearBtnElement) {}
+    this.gearBtnElement.nativeElement.addEventListener('click', this.gearFun, true);
+    const ngbModalOptions: NgbModalOptions = {
+      backdrop: 'static',
+      keyboard: false
+    };
+    setTimeout(() => {
+      this.modalReference = this.modalService.open(this.modal, ngbModalOptions);
+    }, 0);
   }
 
  // clutch button method

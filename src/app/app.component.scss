@@ -105,7 +105,7 @@ p {
   width:100%;
   float:left;
   position:relative;
-  top:90px;
+  top:35px;
   z-index:100;
 }
 
@@ -168,7 +168,7 @@ button::-moz-focus-inner {
   position:relative;
   float:left;
   width:100%;
-  top:124px;
+  top:60px;
 }
 .svgBorder {
     position: absolute;
@@ -291,6 +291,7 @@ button::-moz-focus-inner {
   z-index: 100;
   font-size:14px;
   opacity:0;
+  height:55px;
   -webkit-animation: fadeinout 6s linear 5s forwards;
   animation: fadeinout 6s linear 5s forwards;
 
@@ -352,6 +353,7 @@ button::-moz-focus-inner {
   opacity:0;
   bottom:110px;
   z-index:100;
+  height:55px;
   -webkit-animation: fadeinout 6s linear 6s forwards;
   animation: fadeinout 6s linear 6s forwards;
 
@@ -391,7 +393,12 @@ button::-moz-focus-inner {
   height: 356px;
   z-index:-1;
 }
-
+div {
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Standard syntax */
+}
 /*.btnClutch {
   background-color:#EF493E;
   position:relative;
@@ -442,12 +449,6 @@ button::-moz-focus-inner {
 .shake {
   animation: shaker 0.3s;
   animation-iteration-count: linear;
-}
-div {
-  -webkit-user-select: none; /* Safari 3.1+ */
-  -moz-user-select: none; /* Firefox 2+ */
-  -ms-user-select: none; /* IE 10+ */
-  user-select: none; /* Standard syntax */
 }
 @-webkit-keyframes fadeinout {
   0%,100% { opacity: 0; }
