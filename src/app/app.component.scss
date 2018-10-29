@@ -443,6 +443,12 @@ button::-moz-focus-inner {
   animation: shaker 0.3s;
   animation-iteration-count: linear;
 }
+div {
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Standard syntax */
+}
 @-webkit-keyframes fadeinout {
   0%,100% { opacity: 0; }
   50% { opacity: 1; }
