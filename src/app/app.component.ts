@@ -191,8 +191,9 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
     if (this.clBtnElement) {
       this.clBtnElement.nativeElement.addEventListener('click', this.clutchFun, true);
     }
-    if (this.gearBtnElement) {}
-    this.gearBtnElement.nativeElement.addEventListener('click', this.gearFun, true);
+    if (this.gearBtnElement) {
+      this.gearBtnElement.nativeElement.addEventListener('click', this.gearFun, true);
+    }
     const ngbModalOptions: NgbModalOptions = {
       backdrop: 'static',
       keyboard: false
