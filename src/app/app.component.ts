@@ -173,12 +173,17 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
       backdrop: 'static',
       keyboard: false
     };
-    setTimeout(() => {
+    /*setTimeout(() => {
       debugger;
       this.showModal = true;
       this.gameStart();
       // this.ngxSpinner.hide();
-    }, 3000);
+    }, 3000);*/
+    this.AmCharts.addListener(this.chart, 'rendered', e => {
+      debugger;
+      this.showModal = true;
+      this.gameStart();
+    });
    /* setTimeout(() => {
       this.modalReference = this.modalService.open(this.modal, ngbModalOptions);
     }, 0);*/

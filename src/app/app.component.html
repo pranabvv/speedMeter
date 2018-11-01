@@ -44,7 +44,8 @@
   <div class="loader" *ngIf="!showModal">Loading...</div>
   <div class="wrapper">						
     <section class="spd-main-content">
-      <div class="svgChartContainer">
+      <div class="svgChartContainer"  [ngStyle]="{'z-index':!showModal ? '-1': ''}">
+        <div></div>
         <div class="gameIntroTooltip" *ngIf="gameStartFlag">Keep calm and strap in,it's race time!!! </div>  
         <div class="chartContainer">
           <div class="bgImage" >
