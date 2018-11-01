@@ -1,10 +1,7 @@
-
+<!--
 <ng-template #gameRule let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title"><strong>GAME PLAY</strong></h4>
-   <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>-->
   </div>
   <div class="modal-body">
     <form>
@@ -42,13 +39,15 @@
   </div>
 </ng-template>
 
-<div class="main-container-out" *ngIf="chart">
+<ngx-spinner bdColor="transparent" color="red" type="ball-clip-rotate"></ngx-spinner>-->
+<div class="main-container-out">
+  <div class="loader" *ngIf="!showModal">Loading...</div>
   <div class="wrapper">						
     <section class="spd-main-content">
       <div class="svgChartContainer">
         <div class="gameIntroTooltip" *ngIf="gameStartFlag">Keep calm and strap in,it's race time!!! </div>  
         <div class="chartContainer">
-          <div class="bgImage">
+          <div class="bgImage" >
             <!--<img src="/assets/testImage.png" >-->
             <img src="/assets/animation.gif" >
           </div>
@@ -68,7 +67,7 @@
       </div> 
     </section>
   </div>
-  <div class="imageContainer">
+  <div class="imageContainer" [hidden]="!showModal">
     <div class="clutchContainer">
         <div class="toolTipInfoClutch" *ngIf="gameStartFlag">
             press the clutch button before changing the gear

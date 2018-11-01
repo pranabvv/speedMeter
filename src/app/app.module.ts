@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent
@@ -12,7 +13,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     AmChartsModule,
-    NgbModule
+    NgbModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

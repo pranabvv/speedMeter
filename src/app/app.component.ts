@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { interval } from 'rxjs';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { fromEvent, Observable, forkJoin, combineLatest, merge } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -46,46 +47,14 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
   @ViewChild('gearBtn') private gearBtnElement;
   clutchBtnShakeEffect = false;
   gearBtnShakeEffect = false;
-  constructor(private AmCharts: AmChartsService, private router: Router,
-    private activatedRoute: ActivatedRoute, private modalService: NgbModal, private cdref: ChangeDetectorRef) {
-    this.dataSource = {
-      'chart': {
-        'caption': 'Customer Satisfaction Score',
-        'subcaption': 'Los Angeles Topanga',
-        'plotToolText': 'Current Score: $value',
-        'theme': 'fint',
-        'chartBottomMargin': '50',
-        'showValue': '1'
-      },
-      'colorRange': {
-        'color': [{
-          'minValue': '0',
-          'maxValue': '40.5',
-          'code': '#e44a00'
-        }, {
-          'minValue': '40.5',
-          'maxValue': '70.5',
-          'code': '#f8bd19'
-        }, {
-          'minValue': '70.5',
-          'maxValue': '100',
-          'code': '#6baa01'
-        }]
-      },
-      'dials': {
-        'dial': [{
-          'value': '8.9'
-        }]
-      },
-    }; // end of this.dataSource
+  showModal = false;
 
+  constructor(private AmCharts: AmChartsService, private router: Router,
+    private activatedRoute: ActivatedRoute, private modalService: NgbModal, private cdref: ChangeDetectorRef, private ngxSpinner: NgxSpinnerService) {
+      
   } // end of constructor
 
   ngOnInit() {
-  }
-
-  ngAfterViewInit() {
-    // console.log(this.chart.isReady);
     this.chart = this.AmCharts.makeChart('chartdiv', {
       'type': 'gauge',
       'theme': 'light',
@@ -185,7 +154,13 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
         'enabled': true
       }
     });
-    this.cdref.detectChanges();
+    // this.cdref.detectChanges();
+  }
+
+  ngAfterViewInit() {
+    // console.log(this.chart.isReady);
+   // this.ngxSpinner.show();
+  
     this.clutchFun = this.clutch.bind(this, 'btnPressed');
     this.gearFun = this.gear.bind(this, 'btnPressed');
     if (this.clBtnElement) {
@@ -199,8 +174,14 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
       keyboard: false
     };
     setTimeout(() => {
+      debugger;
+      this.showModal = true;
+      this.gameStart();
+      // this.ngxSpinner.hide();
+    }, 3000);
+   /* setTimeout(() => {
       this.modalReference = this.modalService.open(this.modal, ngbModalOptions);
-    }, 0);
+    }, 0);*/
   }
 
  // clutch button method
@@ -353,8 +334,9 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
   }
 
   // method for closing modal
-  closeModal() {
-    this.modalReference.close();
+  gameStart() {
+   //  this.modalReference.close();
+
     this.paramAppend('started');
     if (this.chart) {
       if (this.chart.arrows) {
@@ -534,5 +516,9 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
     }
     this.clBtnElement.nativeElement.removeEventListener('click', this.clutchFun, true);
     this.gearBtnElement.nativeElement.removeEventListener('click', this.gearFun, true);
+  }
+
+  spinnerShow() {
+
   }
 } // end of class AppComponent
